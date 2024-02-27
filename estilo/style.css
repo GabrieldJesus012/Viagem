@@ -54,6 +54,8 @@ body{
     align-items: center; /* Centraliza o conteúdo verticalmente */
     background-attachment: fixed;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+    border-top-left-radius: 5px; /* Adiciona borda arredondada no canto superior esquerdo */
+    border-top-right-radius: 5px;/* Adiciona borda arredondada no canto superior direito */
 }
 
 .banner-text {
@@ -65,6 +67,12 @@ body{
 
 .pacotes {
     padding: 50px; /* Define o afastamento das laterais */
+}
+
+header{
+    min-width: 600px;
+    max-width: 1600px;
+    margin: auto; 
 }
 
 main{
@@ -150,3 +158,40 @@ section{
 .destino:nth-child(2) img {
     margin-top: 25px;
 }
+
+section#video{
+    color: var(--cor3);
+    background-color: var(--cor4);
+}
+
+section#video p{
+    padding: 10px;
+}
+
+#video .btn {
+    background-color:rgba(6, 6, 187, 0.897);
+    color: var(--cor3);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    white-space: nowrap; 
+    display: inline-block; 
+}
+
+.text-container {
+    flex: 1;
+    padding: 20px;
+    color: var(--cor3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
