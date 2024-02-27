@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+:root{
+    --cor0:#F28444;
+    --cor1:#F29E38;
+    --cor2:#95BFA4;
+    --cor3:#FFF8EE;
+    --cor4:#F2889B;
+}
+
+body{
+    background-color: var(--cor1);
+}
+
+#ilogo{
+    width: 55px;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+.nav {
+    float: right; /* Alinha os itens à direita */
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.nav-item {
+    display: inline-block; /* Faz com que os itens fiquem um ao lado do outro */
+    margin-left: 20px; /* Adiciona um espaçamento entre os itens */
+}
+
+.nav-link{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color:var(--cor3); 
+}
+
+.banner {
+    background-image: url("../img/banner.png");
+    background-size: cover; /* Redimensiona a imagem para cobrir toda a área */
+    background-position: center top; /* Centraliza a imagem */
+    height: 300px; /* Define a altura do banner como 100% da altura da viewport */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    background-attachment: fixed;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+}
+
+.banner-text {
+    color: white; /* Cor do texto do banner */
+    font-size: 2em; /* Tamanho do texto do banner */
+    text-align: center; /* Alinhamento do texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra do texto */
+}
+
+.pacotes {
+    padding: 50px; /* Define o afastamento das laterais */
+}
+
+main{
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
+    min-width: 600px;
+    max-width: 1600px;
+    margin: auto; 
+    margin-bottom: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+section{
+    padding: 15px;
+}
+
+#pacotes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 50px; /* Adiciona espaço entre as seções */
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    width: 50%;
+    color: var(--cor4);
+}
+
+#pacotes .btn {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    white-space: nowrap; 
+    display: inline-block; 
+}
+
+#viagens{
+    background-color: #f0f0f0; /* Define a cor de fundo cinza */
+    display: flex; /* Mostra os itens lado a lado */
+    justify-content: space-between; /* Distribui os itens horizontalmente */
+    align-items: flex-start;
+}
+
+.destino {
+    flex-basis: 30%; /* Define a largura de cada item */
+    text-align: center;
+    position: relative
+}
+
+.destino h2 {
+    position: relative;
+    text-align: center; /* Centraliza o texto */
+    color:var(--cor4);
+}
+
+.imagem-container {
+    display: grid; /* Usando grid layout */
+    grid-template-columns: auto; /* Uma coluna auto */
+}
+
+.destino p {
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.destino img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.destino:nth-child(2) img {
+    margin-top: 25px;
+}
