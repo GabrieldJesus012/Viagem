@@ -31,10 +31,18 @@
                         <a class="nav-link" href="checkout.html"><i class="bi bi-cart3"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-person-circle"></i></a>
+                            <a class="nav-link" href="#" id="user-icon" ><i class="bi bi-person-circle"></i></a>
                         </li>
                     </ul>
                 </div>
+
+                <div class="login-form" id="login-form">
+                        <input type="email" placeholder="Email">
+                        <input type="password" placeholder="Senha">
+                        <button id="login-button">Entrar</button>
+                        <a href="#" id="forgot-password">Esqueci a senha</a>
+                </div>
+
             </div>
         </nav>
         <div class="banner">
@@ -43,6 +51,7 @@
             </div>
         </div>
     </header>
+
     <main>
         <section id="pacotes">
             <div class="content">
@@ -111,4 +120,37 @@
         Desenvolvido por <a href="https://github.com/GabrieldJesus012" target="_blank">&copy; GabrielD'Jesus</a>
     </footer>
 </html>
+
+<script>
+
+const userIcon = document.getElementById('user-icon');
+const loginForm = document.getElementById('login-form');
+const forgotPasswordLink = document.getElementById('forgot-password');
+const loginButton = document.getElementById('login-button');
+
+loginForm.style.display = 'none';
+
+userIcon.addEventListener('click', function() {
+    if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+    } else {
+        loginForm.style.display = 'none';
+    }
+});
+
+document.addEventListener('scroll', function() {
+    loginForm.style.display = 'none';
+});
+
+forgotPasswordLink.addEventListener('click', function(event) {
+    window.alert("Fale com o suporte: gabrieldjesus055@outlook.com")
+});
+
+loginButton.addEventListener('click', function() {
+    window.alert("Ainda não foi elaborado")
+});
+
+
+
+</script>
 
