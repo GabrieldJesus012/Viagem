@@ -115,6 +115,11 @@ main{
     border-bottom-right-radius: 10px;
 }
 
+
+.hidden {
+    display: none;
+}
+
 footer {
     background-color: var(--cor3);
     text-align: center;

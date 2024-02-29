@@ -53,6 +53,7 @@
         <h2>Pagamento</h2>
     </div>
     <div class="row g-5">
+
         <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-primary">Seu carrinho</span>
@@ -60,42 +61,18 @@
             </h4>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                        <h6 class="my-0">Primeiro Produto</h6>
-                        <small class="text-body-secondary">Brief description</small>
-                    </div>
-                    <span class="text-body-secondary">$12</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                        <h6 class="my-0">Segundo Produto</h6>
-                        <small class="text-body-secondary">Brief description</small>
-                    </div>
-                    <span class="text-body-secondary">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                        <h6 class="my-0">Terceiro Produto</h6>
-                        <small class="text-body-secondary">Brief description</small>
-                    </div>
-                    <span class="text-body-secondary">$5</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                    <div class="text-success">
-                        <h6 class="my-0">Codigo de Promoção</h6>
-                        <small>EXAMPLECODE</small>
-                    </div>
-                    <span class="text-success">−$5</span>
-                </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (R$)</span>
-                        <strong>R$20,00</strong>
-                    </li>
-                    </ul>
-
-                    </form>
-
+                <div>
+                    <h6 id="product-name" class="my-0">Selecione o Produto</h6>
                 </div>
+                <span class="text-body-secondary">R$0,00</span>
+                </li>
+                <li id="total-price" class="list-group-item d-flex justify-content-between">
+                <span>Total (R$)</span>
+                <strong>R$0,00</strong>
+                </li>
+            </ul>
+        </div>
+
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Dados do pagamento</h4>
                     <form class="needs-validation" novalidate>
@@ -163,56 +140,84 @@
                         <input type="checkbox" class="form-check-input" id="save-info">
                         <label class="form-check-label" for="save-info">Salvar as informações para proxima compra.</label>
                     </div>
+
+                    <hr class="my-4">
+                    <h4 class="mb-3">Pacote</h4>
+                    <div class="my-3">
+                        <label for="destino" class="form-label">Destino:</label>
+                        <select id="destino" class="form-select" aria-label="Selecione o destino">
+                            <option selected>Abra o menu e selecione</option>
+                            <option value="1">Gramado</option>
+                            <option value="2">Porto Seguro</option>
+                            <option value="3">Rio de Janeiro</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="my-3">
+                                <label for="dataIda" class="form-label">Data de Ida:</label>
+                                <input type="date" id="dataIda" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="my-3">
+                                <label for="dataVolta" class="form-label">Data de Volta:</label>
+                                <input type="date" id="dataVolta" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
         
                     <hr class="my-4">
                     <h4 class="mb-3">Pagamento</h4>
                     <div class="my-3">
                         <div class="form-check">
-                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                        <label class="form-check-label" for="credit">Cartão de Credito</label>
+                            <input id="Pix" name="paymentMethod" type="radio" class="form-check-input" onclick="toggleRowVisibility()"  required>
+                            <label class="form-check-label" for="Pix">Pix</label>
                         </div>
                         <div class="form-check">
-                        <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                        <label class="form-check-label" for="debit">Cartão de Debito</label>
+                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" onclick="toggleRowVisibility()" checked  required>
+                            <label class="form-check-label" for="credit">Cartão de Crédito</label>
                         </div>
                         <div class="form-check">
-                        <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                        <label class="form-check-label" for="Pix">Pix</label>
+                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" onclick="toggleRowVisibility()" required>
+                            <label class="form-check-label" for="debit">Cartão de Débito</label>
                         </div>
                     </div>
-
-                    <div class="row gy-3">
+                    
+                    <div class="row gy-3" id="cardDetails">
                         <div class="col-md-6">
-                        <label for="cc-name" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                        <small class="text-body-secondary">Nome completo conforme exibido no cartão</small>
-                        <div class="invalid-feedback">
-                            Nome no cartão é obrigatório
+                            <label for="cc-name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <small class="text-body-secondary">Nome completo conforme exibido no cartão</small>
+                            <div class="invalid-feedback">
+                                Nome no cartão é obrigatório
+                            </div>
                         </div>
-                        </div>
-            
+                    
                         <div class="col-md-6">
-                        <label for="cc-number" class="form-label">Número do cartão de crédito</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Número do cartão de crédito é obrigatório
+                            <label for="cc-number" class="form-label">Número do cartão de crédito</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Número do cartão de crédito é obrigatório
+                            </div>
                         </div>
-                        </div>
-            
+                    
                         <div class="col-md-3">
-                        <label for="cc-expiration" class="form-label">Data de expiração</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Data é obrigatório
+                            <label for="cc-expiration" class="form-label">Data de expiração</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Data é obrigatório
+                            </div>
                         </div>
-                        </div>
-            
+                    
                         <div class="col-md-3">
-                        <label for="cc-cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Security code required
-                        </div>
+                            <label for="cc-cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
                         </div>
                     </div>
             
@@ -262,4 +267,24 @@ forgotPasswordLink.addEventListener('click', function(event) {
 loginButton.addEventListener('click', function() {
     window.alert("Ainda não foi elaborado")
 });
+
+function toggleRowVisibility() {
+        var cardDetails = document.getElementById("cardDetails");
+        var creditRadio = document.getElementById("credit");
+        var debitRadio = document.getElementById("debit");
+
+        if (creditRadio.checked || debitRadio.checked) {
+            cardDetails.classList.remove("hidden");
+        } else {
+            cardDetails.classList.add("hidden");
+        }
+    }
+
+    document.getElementById('destino').addEventListener('change', function() {
+    var selectedOption = this.options[this.selectedIndex].text;
+    document.getElementById('product-name').textContent = selectedOption;
+  });
+
+
+
 </script>
