@@ -5,42 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="estilo/style.css">
+    <link rel="stylesheet" href="estilo/style2.css">
     <link rel="shortcut icon" href="img/viagem.ico" type="image/x-icon">
     <title>Viagem dos sonho</title>
 </head>
 <body>
-    <header class="container-fluid p-2 bg-warning text-center">
-        <nav class="navbar navbar-expand-lg bg-warning">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Viagem dos sonhos</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end bg-warning" id="navbarSupportedContent">
+    <header>
+        <nav>
+            <div>
+                <a href="index.html"><img src="img/Icone.png" alt="logo" id="ilogo"></a>
+                <div class="nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Pacotes</a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Taxas</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contato
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                            <a class="nav-link" href="#pacotes">Pacotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-cart3"></i></a>
+                            <a class="nav-link" href="#missao">Taxas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:gabrieldjesus055@outlook.com">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="checkout.html"><i class="bi bi-cart3"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="user-icon" ><i class="bi bi-person-circle"></i></a>
                         </li>
                     </ul>
                 </div>
+
+                <div class="login-form" id="login-form">
+                        <input type="email" placeholder="Email">
+                        <input type="password" placeholder="Senha">
+                        <button id="login-button">Entrar</button>
+                        <a href="#" id="forgot-password">Esqueci a senha</a>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -89,16 +92,12 @@
                         <strong>R$20,00</strong>
                     </li>
                     </ul>
-            
-                    <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <button type="submit" class="btn btn-secondary">Redeem</button>
-                    </div>
+
                     </form>
+
                 </div>
                 <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Endereço de pagamento</h4>
+                    <h4 class="mb-3">Dados do pagamento</h4>
                     <form class="needs-validation" novalidate>
                     <div class="row g-3">
                         <div class="col-sm-6">
@@ -126,25 +125,34 @@
                         </div>
             
                         <div class="col-12">
-                        <label for="address" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" id="address" placeholder="N 588º - Rua Antonio Pedro" required>
+                        <label for="address" class="form-label">Rua</label>
+                        <input type="text" class="form-control" id="address" placeholder="Nome da sua rua " required>
                         <div class="invalid-feedback">
                             Por favor coloque seu endereço.
                         </div>
-                        </div>
+                        
+                        <div class="col-12">
+                            <label for="naddress" class="form-label">Número</label>
+                            <input type="number" class="form-control" id="naddress" placeholder="Nº000" required>
+                            <div class="invalid-feedback">
+                                Por favor coloque seu endereço.
+                            </div>
 
-                        <div class="col-md-4">
-                        <label for="state" class="form-label">Estado</label>
-                        <select class="form-select" id="state" required>
-                            <option value="">Escolha...</option>
-                            <option>Piauí</option>
-                            <option>Maranhão</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Por favor escolha um Estado valido.
-                        </div>
-                        </div>
+                        <div class="col-12">
+                                <label for="baddress" class="form-label">Bairro</label>
+                                <input type="text" class="form-control" id="baddress" placeholder="Seu Bairro" required>
+                                <div class="invalid-feedback">
+                                    Por favor coloque seu endereço.
+                                </div>
+                        
+                                <div class="col-12">
+                                    <label for="caddress" class="form-label">CEP</label>
+                                    <input type="text" class="form-control"  id="caddress" name="cep" placeholder="Ex: 00000-000" maxlength="9" required>
+                                    <div class="invalid-feedback">
+                                        Por favor coloque seu endereço.
+                                    </div>
 
+                        </div>
                     <hr class="my-4">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="same-address">
@@ -169,7 +177,7 @@
                         </div>
                         <div class="form-check">
                         <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                        <label class="form-check-label" for="paypal">PayPal</label>
+                        <label class="form-check-label" for="Pix">Pix</label>
                         </div>
                     </div>
 
@@ -210,36 +218,48 @@
             
                     <hr class="my-4">
             
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue para pagamento</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Efetuar pagamento</button>
                     </form>
                 </div>
                 </div>
             </main>
 
-        <footer class="container-fluid p-3 text-center">
-            <p>Desenvolvido por Gabriel</p>
-        </footer>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+            
         </script>
 </body>
-    
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Suas compras</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Produto adicionado ao carrinho!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar comprando</button>
-                    <button type="button" class="btn btn-success">Finalizar a compra</button>
-                </div>
-            </div>
-            </div>
-        </div>
+
 </html>
     
+<footer>
+    Desenvolvido por <a href="https://github.com/GabrieldJesus012" target="_blank">&copy; GabrielD'Jesus</a>
+</footer>
+
+<script>
+const userIcon = document.getElementById('user-icon');
+const loginForm = document.getElementById('login-form');
+const forgotPasswordLink = document.getElementById('forgot-password');
+const loginButton = document.getElementById('login-button');
+
+loginForm.style.display = 'none';
+
+userIcon.addEventListener('click', function() {
+    if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+    } else {
+        loginForm.style.display = 'none';
+    }
+});
+
+document.addEventListener('scroll', function() {
+    loginForm.style.display = 'none';
+});
+
+forgotPasswordLink.addEventListener('click', function(event) {
+    window.alert("Fale com o suporte: gabrieldjesus055@outlook.com")
+});
+
+loginButton.addEventListener('click', function() {
+    window.alert("Ainda não foi elaborado")
+});
+</script>
