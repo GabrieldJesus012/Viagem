@@ -20,10 +20,10 @@
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#pacotes">Pacotes</a>
+                            <a class="nav-link" href="index.html#pacotes">Pacotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#missao">Taxas</a>
+                            <a class="nav-link" href="checkout.html">Taxas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="mailto:gabrieldjesus055@outlook.com">Contato</a>
@@ -54,21 +54,20 @@
     </div>
     <div class="row g-5">
 
-        <div class="col-md-5 col-lg-4 order-md-last">
+        <div class="col-md-5 col-lg-4 order-md-last" style="position: fixed; top: 165px; right: 320px; max-width: 390px;">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-primary">Seu carrinho</span>
-                <span class="badge bg-primary rounded-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                    <h6 id="product-name" class="my-0">Selecione o Produto</h6>
-                </div>
-                <span class="text-body-secondary">R$0,00</span>
+                    <div>
+                        <h6 id="product-name" class="my-0">Selecione o Produto</h6>
+                    </div>
+                    <span id="product-price" class="text-body-secondary">R$0,00</span>
                 </li>
                 <li id="total-price" class="list-group-item d-flex justify-content-between">
-                <span>Total (R$)</span>
-                <strong>R$0,00</strong>
+                    <span>Total (R$)</span>
+                    <strong id="total-price-value">R$0,00</strong>
                 </li>
             </ul>
         </div>
@@ -146,27 +145,28 @@
                     <div class="my-3">
                         <label for="destino" class="form-label">Destino:</label>
                         <select id="destino" class="form-select" aria-label="Selecione o destino">
-                            <option selected>Abra o menu e selecione</option>
-                            <option value="1">Gramado</option>
-                            <option value="2">Porto Seguro</option>
-                            <option value="3">Rio de Janeiro</option>
+                        <option selected disabled>Abra o menu e selecione</option>
+                        <option value="1">Gramado</option>
+                        <option value="2">Porto Seguro</option>
+                        <option value="3">Rio de Janeiro</option>
                         </select>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="my-3">
-                                <label for="dataIda" class="form-label">Data de Ida:</label>
-                                <input type="date" id="dataIda" class="form-control">
-                            </div>
+                        <div class="my-3">
+                            <label for="dataIda" class="form-label">Data de Ida:</label>
+                            <input type="date" id="dataIda" class="form-control">
+                        </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="my-3">
-                                <label for="dataVolta" class="form-label">Data de Volta:</label>
-                                <input type="date" id="dataVolta" class="form-control">
-                                </div>
-                            </div>
+                        <div class="my-3">
+                            <label for="dataVolta" class="form-label">Data de Volta:</label>
+                            <input type="date" id="dataVolta" class="form-control">
+                        </div>
                         </div>
                     </div>
+                    </div>
+                </div>
 
         
                     <hr class="my-4">
@@ -283,8 +283,64 @@ function toggleRowVisibility() {
     document.getElementById('destino').addEventListener('change', function() {
     var selectedOption = this.options[this.selectedIndex].text;
     document.getElementById('product-name').textContent = selectedOption;
-  });
+});
 
+document.getElementById('destino').addEventListener('change', updateProductPrice);
+document.getElementById('dataIda').addEventListener('change', updateProductPrice);
+document.getElementById('dataVolta').addEventListener('change', updateProductPrice);
+
+function updateProductPrice() {
+    var destination = document.getElementById('destino').value;
+    var startDate = document.getElementById('dataIda').value;
+    var endDate = document.getElementById('dataVolta').value;
+    if (!startDate || !endDate) {
+        document.getElementById('product-price').textContent = 'R$0,00';
+        document.getElementById('total-price-value').textContent = 'R$0,00';
+        return;
+    }
+
+        startDate = new Date(startDate);
+        endDate = new Date(endDate);
+        var price = 0;
+
+    if (destination === "1") { 
+        var differenceInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); 
+        if (differenceInDays <= 3) {
+            price = 1300;
+        } else if (differenceInDays <= 6) {
+            price = 1900;
+        } else if (differenceInDays <= 10) {
+            price = 2700;
+        } else {
+            price = 4000;
+        }
+        } else if (destination === "2") { // Porto Seguro
+        var differenceInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        if (differenceInDays <= 3) {
+            price = 700;
+        } else if (differenceInDays <= 6) {
+            price = 1000;
+        } else if (differenceInDays <= 10) {
+            price = 1400;
+        } else {
+            price = 2000;
+        }
+        } else if (destination === "3") { // Rio de Janeiro
+        var differenceInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        if (differenceInDays <= 3) {
+            price = 900;
+        } else if (differenceInDays <= 6) {
+            price = 1300;
+        } else if (differenceInDays <= 10) {
+            price = 1600;
+        } else {
+            price = 2100;
+        }
+    }
+
+    document.getElementById('product-price').textContent = 'R$' + price.toFixed(2).replace('.', ',');
+    document.getElementById('total-price-value').textContent = 'R$' + price.toFixed(2).replace('.', ',');
+}
 
 
 </script>
