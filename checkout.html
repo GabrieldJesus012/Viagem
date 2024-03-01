@@ -222,8 +222,26 @@
                     </div>
             
                     <hr class="my-4">
-            
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Efetuar pagamento</button>
+
+                    <button class="w-100 btn btn-primary btn-lg" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Efetuar pagamento
+                    </button>
+                    
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deseja confirmar o pagamento?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button id="confirmButton" type="button" class="btn btn-primary">Confirmar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
                     </form>
                 </div>
                 </div>
@@ -342,5 +360,9 @@ function updateProductPrice() {
     document.getElementById('total-price-value').textContent = 'R$' + price.toFixed(2).replace('.', ',');
 }
 
+document.getElementById('confirmButton').addEventListener('click', function() {
+        window.alert('Compra aprovada com sucesso');
+        window.location.reload();
+    });
 
 </script>
